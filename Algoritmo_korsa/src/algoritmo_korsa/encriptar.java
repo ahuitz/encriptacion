@@ -13,22 +13,36 @@ import java.util.ArrayList;
  */
 public class encriptar {    
     //private String [] vecSbCad=new String[6];
-    ArrayList<String> vecSbCad=new ArrayList<String>();
+    public ArrayList<String> vecSbCad=new ArrayList<String>();
     
-    public ArrayList grupos(String texto){
+    public ArrayList grupos(String texto, int longitud){
         valores val=new valores();        
         String invertir="";
+        String centros="";        
         texto=val.getCadena(texto);
-        for (int i=0; i<5;i++){
-            String sub=texto.substring(0,5);
-            for (int j=sub.length()-1; j>=0; j--){
-                invertir=invertir+sub.charAt(j);
-            }
+        for (int i=0; i<longitud;i++){
+            String grupo=texto.substring(0,longitud);                        
+            centros=centros+grupo.charAt(longitud/2);            
+            for (int j=grupo.length()-1; j>=0; j--){
+                if(j!=longitud/2){
+                    invertir=invertir+grupo.charAt(j);
+                }
+            }            
             vecSbCad.add(i,invertir);
-            texto=texto.substring(5);
+            texto=texto.substring(longitud);
             invertir="";
-            System.out.println(vecSbCad.get(i));
+            
         }
+        vecSbCad.add(vecSbCad.size(), centros);
         return vecSbCad;
+    }
+    
+    public String encriptado(String texto,int longitud){
+        String mensaje="";
+        ArrayList grupos=grupos(texto, longitud);
+        for (int i=0;i<grupos.size();i++){
+            mensaje=mensaje+grupos.get(i);
+        }
+        return mensaje;
     }
 }
