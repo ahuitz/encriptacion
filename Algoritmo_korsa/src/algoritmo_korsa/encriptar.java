@@ -25,21 +25,27 @@ public class encriptar {
         valores val=new valores();        
         String invertir="";
         String centros="";        
-        texto=val.getCadena(texto);
-        for (int i=0; i<longitud;i++){
+        texto=val.getCadena(texto,longitud);
+        int posiciones=texto.length()/longitud;
+        for (int i=0; i<posiciones;i++){
             String grupo=texto.substring(0,longitud);                        
             centros=centros+grupo.charAt(longitud/2);            
             for (int j=grupo.length()-1; j>=0; j--){
                 if(j!=longitud/2){
                     invertir=invertir+grupo.charAt(j);
                 }
+                
             }            
             vecSbCad.add(i,invertir);
+            //System.out.println(vecSbCad.get(i));
             texto=texto.substring(longitud);
             invertir="";
             
         }
         vecSbCad.add(vecSbCad.size(), centros);
+        for (int k=0;k<vecSbCad.size();k++){
+            System.out.println(vecSbCad.get(k));
+        }
         return vecSbCad;
     }
     

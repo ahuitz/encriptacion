@@ -20,16 +20,16 @@ public class valores {
      * por el usuario tenga el tamaño adecuado para hacer subgrupos
      * 
      */
-    private String criterioSubcadena(int tamCad){
-        String cad ="0";
+    private String criterioSubcadena(int tamCad,int longitud){
+        String cad =" ";
         int residuo;
-        residuo=(tamCad%5);        
+        residuo=(tamCad%longitud);        
         if(residuo==0){
             cad="";
         }else{
-            residuo=5-residuo;
+            residuo=longitud-residuo;
             for (int i=0; i<residuo-1;i++){                
-                cad=cad+"0";
+                cad=cad+" ";
             }
         }
         return cad;
@@ -40,8 +40,9 @@ public class valores {
      * @return cadena es la concatenación de el texto original y la cadena que complementa el texto
      * para poder ser divisible
      */
-    public String getCadena(String cadena){        
-        cadena=cadena+criterioSubcadena(cadena.length());
+    public String getCadena(String cadena,int longitud){        
+        cadena=cadena+criterioSubcadena(cadena.length(),longitud);
+        System.out.println(cadena);
         return cadena;
         
     }
