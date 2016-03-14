@@ -16,14 +16,20 @@ public class valores {
     
     private String criterioSubcadena(int tamCad){
         String cad ="0";
-        int complemento;
-        complemento=(tamCad%5);        
-        for (int i=0; i<complemento-1;i++){
-            cad=cad.concat("0");
+        int residuo;
+        residuo=(tamCad%5);        
+        if(residuo==0){
+            cad="";
+        }else{
+            residuo=5-residuo;
+            for (int i=0; i<residuo-1;i++){
+                //cad=cad.concat("0");
+                cad=cad+"0";
+            }
         }
         return cad;
     }
-    public String texto(String cadena){        
+    public String getCadena(String cadena){        
         cadena=cadena+criterioSubcadena(cadena.length());
         return cadena;
         
