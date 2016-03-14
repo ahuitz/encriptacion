@@ -18,7 +18,7 @@ public class Algoritmo_korsa {
         // TODO code application logic here
         valores val=new valores ();
         encriptar encrip=new encriptar();
-        //encrip.grupos("ratón que come quesito",5);
+        
         System.out.println(encrip.encriptado("raton que come quesito", 5));
         /*for (int i=0; i<encrip.vecSbCad.size();i++){
             System.out.println(encrip.vecSbCad.get(i));

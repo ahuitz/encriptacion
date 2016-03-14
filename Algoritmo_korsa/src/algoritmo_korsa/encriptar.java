@@ -13,8 +13,14 @@ import java.util.ArrayList;
  */
 public class encriptar {    
     //private String [] vecSbCad=new String[6];
-    public ArrayList<String> vecSbCad=new ArrayList<String>();
-    
+    private ArrayList<String> vecSbCad=new ArrayList<String>();
+    /**
+     * 
+     * @param texto que se quiere cifrar (ingresado por un usuario) y recibido por el metodo public encriptado
+     * @param longitud el tamaño (numero de letras) de los subgrupos que se van a realizar
+     * @return vecSbCad que cada posicion representa un subgrupo, y la ultima posicion es 
+     * la extracción de todos los caracteres del centro.
+     */
     public ArrayList grupos(String texto, int longitud){
         valores val=new valores();        
         String invertir="";
@@ -37,6 +43,12 @@ public class encriptar {
         return vecSbCad;
     }
     
+    /**
+     * 
+     * @param texto que se va ha cifrar e ingresado por un usuario 
+     * @param longitud de los subgrupos que se quieren crear
+     * @return mensaje encriptado 
+     */
     public String encriptado(String texto,int longitud){
         String mensaje="";
         ArrayList grupos=grupos(texto, longitud);
