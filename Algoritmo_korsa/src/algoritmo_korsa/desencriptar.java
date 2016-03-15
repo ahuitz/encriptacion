@@ -8,11 +8,23 @@ package algoritmo_korsa;
 import java.util.ArrayList;
 
 /**
- *
+ * 
  * @author Rosario
  */
-public class desencriptar { 
+public class desencriptar {     
     private ArrayList<String> vecGrupos=new ArrayList<String>();
+    
+    /**
+     * 
+     * @param texto que ha sido enviado de manera encriptada por otro usuario
+     * @param longitud de cada subgrupo que utilizo para encriptar
+     * @return vecGrpos que contiene los subgrupos ordenados y con los centros
+     * variable centros, almacena el conjunto de letras que forman los centros de las palabras
+     * se extraen los centros y se obtiene una nueva cadena "texto" que tiene el resto del mensaje
+     * se crean los subgrupos de acuerdo a la longitud enviada por el encriptador -1, por los centros eliminados
+     * se invierte el valor de cada subgrupo y se insertan los centros
+     * se almacena en un una lista, para enviarla al metodo mensaje 
+     */
     private ArrayList grupos(String texto, int longitud){     
         int longCentros=texto.length()-(texto.length()/longitud);
         String centros=texto.substring(longCentros, texto.length());        
@@ -38,7 +50,12 @@ public class desencriptar {
         
         return vecGrupos;
     }
-    
+    /**
+     * 
+     * @param texto encriptado, enviado por un usuuaro
+     * @param longitud de los subgrupos, 
+     * @return msj union de todas los subgrupos, para generar el mensaje desencriptado
+     */
     public String mensaje(String texto,int longitud){
             String msj="";
             ArrayList<String> gruposFnl=grupos(texto, longitud);
